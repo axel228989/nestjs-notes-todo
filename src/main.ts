@@ -22,7 +22,7 @@ async function bootstrap() {
     .addTag("Notes")
     .build();
   const appDocument = SwaggerModule.createDocument(app, options, {
-    include: [NoteModule]
+    include: [AppModule]
   });
   SwaggerModule.setup("api", app, appDocument);
   await app.listen(PORT);

@@ -8,7 +8,7 @@ import { CreateNoteDTO } from "../dtos/note.dto";
 export class NoteService {
     constructor(@InjectModel("Note") private readonly noteModel: Model<Note>) { }
     async createANote(createNoteDTO: CreateNoteDTO): Promise<Note> {
-        const newNote = await this.noteModel(createNoteDTO);
+        const newNote = await this.noteModel.create(createNoteDTO);
         return newNote.save();
     }
 
@@ -28,7 +28,7 @@ export class NoteService {
     }
 
     async deleteANote(_id): Promise<any> {
-        const note = await this.noteModel.findByIdAndRemove(_id);
+        const note = await this.noteModel.findByIdAndDelete(_id);
         return note;
     }
 }
